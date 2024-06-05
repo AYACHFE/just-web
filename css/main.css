@@ -1,0 +1,74 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+    height: 100vh; /* Use vh (viewport height) units to make the body take up the full screen */
+    width: 100vw; /* Use vw (viewport width) units to make the body take up the full screen */
+    background: linear-gradient(150deg, #003E38 1%, #003E38 14%, #014E46 28%, #00766A 41%, #004E46 60%, #035149 62%, #003E38 92%, #002924 99%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+	font-family: 'Roboto', sans-serif;
+}
+
+.wrapper{
+	height: 100%;
+	display: flex;
+}
+
+
+.cadre{
+	display: flex;
+	/* list-style: none; */
+	/* justify-content: space-evenly; */
+	/* flex-direction: column; */
+	/* flex-direction: column; */
+	height: 100%;
+	padding: 25px;
+	/* border: 10px solid #00766A; */
+	/* border-radius: 10px; */
+}
+
+.sidebar{
+	/* display: flex;
+	flex-direction: column; */
+	flex: 1;
+	/* padding: 45px; */
+	font-size: 25px;
+	/* font-weight: bold; */
+	border: 10px solid #002924;
+	border-radius: 30px;
+	background-color: #002924;
+}
+.content_ {
+	display: flex;
+	flex-direction: row;
+	padding: 45px;
+	font-size: 25px;
+	font-weight: bold;
+	border: 10px solid #ffffff;
+	border-radius: 10px;
+}
+.ov-content_1 {
+	
+	border: 10px solid #002924;
+	border-radius: 30px;
+	padding: 25px;
+	background-color: #002924;
+}
+
+.over-head {
+	display: flex;
+	flex: 10;
+	flex-direction: column;
+	padding: 0px 25px;
+	font-size: 25px;
+	/* border: 10px solid #002924; */
+	/* justify-content: center; */
+}
+.logo {
+	padding: 10px;
+}
