@@ -34,13 +34,16 @@ body {
 
 .sidebar{
 	display: flex;
-    justify-content: center;
-    align-items: flex-start;
+	flex-direction: column;
+	flex: 1;
+    /* justify-content: center; */
+    /* align-items: flex-start; */
 	flex: 1;
 	font-size: 25px;
 	border: 10px solid #00453F;
 	border-radius: 30px;
 	background-color: #00453F;
+
 }
 .content_ {
 	display: flex;
@@ -51,24 +54,26 @@ body {
 	border: 10px solid #ffffff;
 	border-radius: 10px;
 }
-.ov-content_1 {
+/* .ov-content_1 { */
 	
-	border: 10px solid #00453F;
+	/* border: 10px solid #00453F;
 	border-radius: 30px;
 	padding: 35px;
-	background-color: #00453F;
-}
+	background-color: #00453F; */
+/* } */
 
 .over-head {
 	display: flex;
 	flex: 20;
 	flex-direction: column;
 	padding: 0px 25px;
-	font-size: 25px;
+	/* font-size: 25px; */
 	/* border: 10px solid #00453F; */
 	/* justify-content: center; */
 }
 .logo {
+	display: flex;
+	/* justify-content: center; */
 	padding: 10px;
 }
 
@@ -103,4 +108,21 @@ body {
 	height: 50px;
 	width: 50px;
 	/* padding: 10px; */
+}
+.sidebar-cmp {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.sb-home, .sb-friends, .sb-messages {
+    display: flex;
+    padding: 30px;
+    justify-content: center;
+}
+
+.sb-logout {
+	height: 20px;
+	width: 20px;
+	margin-top: auto;
 }
