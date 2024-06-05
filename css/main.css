@@ -7,11 +7,11 @@
 body {
     height: 100vh; /* Use vh (viewport height) units to make the body take up the full screen */
     width: 100vw; /* Use vw (viewport width) units to make the body take up the full screen */
-    background: linear-gradient(150deg, #003E38 1%, #003E38 14%, #014E46 28%, #00766A 41%, #004E46 60%, #035149 62%, #003E38 92%, #002924 99%);
+    background: linear-gradient(150deg, #003E38 1%, #003E38 14%, #014E46 28%, #00766A 41%, #004E46 60%, #035149 62%, #003E38 92%, #00453F 99%);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-	font-family: 'Roboto', sans-serif;
+	/* font-family: 'Roboto', sans-serif; */
 }
 
 .wrapper{
@@ -33,15 +33,14 @@ body {
 }
 
 .sidebar{
-	/* display: flex;
-	flex-direction: column; */
+	display: flex;
+    justify-content: center;
+    align-items: flex-start;
 	flex: 1;
-	/* padding: 45px; */
 	font-size: 25px;
-	/* font-weight: bold; */
-	border: 10px solid #002924;
+	border: 10px solid #00453F;
 	border-radius: 30px;
-	background-color: #002924;
+	background-color: #00453F;
 }
 .content_ {
 	display: flex;
@@ -54,21 +53,54 @@ body {
 }
 .ov-content_1 {
 	
-	border: 10px solid #002924;
+	border: 10px solid #00453F;
 	border-radius: 30px;
-	padding: 25px;
-	background-color: #002924;
+	padding: 35px;
+	background-color: #00453F;
 }
 
 .over-head {
 	display: flex;
-	flex: 10;
+	flex: 20;
 	flex-direction: column;
 	padding: 0px 25px;
 	font-size: 25px;
-	/* border: 10px solid #002924; */
+	/* border: 10px solid #00453F; */
 	/* justify-content: center; */
 }
 .logo {
 	padding: 10px;
+}
+
+.other-bar {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.online {
+	flex : 7;
+	border: 10px solid #00453F;
+	border-radius: 30px;
+	background-color: #00453F;
+}
+
+.chat-bar {
+	display: flex;
+	justify-content: center;
+	flex: 2;
+	border: 10px solid #00453F;
+	border-radius: 30px;
+	background-color: #00453F;
+}
+.user-logo {
+	padding: 10px;
+}
+.other-bar-spacing {
+	padding: 15px;
+}
+.chat-logo {
+	height: 50px;
+	width: 50px;
+	/* padding: 10px; */
 }
