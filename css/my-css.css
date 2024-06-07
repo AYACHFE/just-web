@@ -25,12 +25,15 @@
 	color: rgb(0, 0, 0);
 	font-size: 2.2vw;
 }
-.user-1 ,.user-2{
+.user-1 {
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
-	padding : 0% 2%;
-	/* font-size: 2em; */
+}
+.user-2{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
 }
 
 .user-1-name , .user-2-name{
@@ -40,7 +43,7 @@
 
 }
 .tb-user-1-logo , .tb-user-2-logo{
-	width: 35%;
+	width: 30%;
 	padding: 0px 10px;
 }
 
