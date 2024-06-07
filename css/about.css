@@ -6,8 +6,8 @@
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
+    /* height: 100vh;
+    width: 100vw; */
     background: linear-gradient(150deg, #003E38 1%, #003E38 14%, #014E46 28%, #00766A 41%, #004E46 60%, #035149 62%, #003E38 92%, #00453F 99%);
     background-repeat: no-repeat;
     background-position: center;
