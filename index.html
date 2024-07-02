@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="css/my-css.css">
+        <link rel="stylesheet" href="css/game.css">
             <title>HOME | AIT LWEB</title>
     </head>
     <body>
@@ -66,6 +66,7 @@
 									<div class="start-game"><h2>Game</h2></div>
 								</div>
 								<div class="right-racket"><img src="images/racket.svg" alt=""></div>
+								<div class="ball"></div>
 							</div>
 						</div>
 					</div>
@@ -74,13 +75,13 @@
                 </div>
             </div>
             <div class="right-side-panel">
-                 <div class="upper-section">
-                    <div class="profile-photo">
-                        <img src="images/image_42.png">
+				<div class="upper-section">
+					<div class="profile-photo">
+						<img src="images/image_42.png">
                     </div>
                     <img class="upper-section-icone" src="images/Vector.svg">
                     <div class="users-display overflow-style flex-col">
-                        <div class="user" style="background-color:#D9D9D9;">
+						<div class="user" style="background-color:#D9D9D9;">
                             <img src="images/users/happy-1.svg" alt="">
                             <div class="user-status active "></div>
                             <div class="user-ingame active"><p>in Game</p></div>
@@ -128,29 +129,30 @@
                             <div class="user-ingame "><p>in Game</p></div>
                         </div>
                     </div>
-
+					
                 </div>
                 <div class="lower-section">
-                        <div class="lower-section-header-img flex-center">
-                            <img  src="images/Chat.svg">
-                        </div>
-                        <div class="friends-list overflow-style">
-                            <div class="friend" style="background-color: #D9D9D9;">
-                                <img src="images/users/1_men.svg">
-                                <div class="user-status active"></div>
-                            </div>
-                            <div class="friend" style="background-color: #D9D9D9;">
-                                <img src="images/users/2_men.svg">
-                                <div class="user-status"></div>
-                            </div>
-                            <div class="friend" style="background-color: #D9D9D9;">
-                                <img src="images/users/3_men.svg">
-                                <div class="user-status"></div>
-                            </div>
-                        </div>
+					<div class="lower-section-header-img flex-center">
+						<img  src="images/Chat.svg">
+					</div>
+					<div class="friends-list overflow-style">
+						<div class="friend" style="background-color: #D9D9D9;">
+							<img src="images/users/1_men.svg">
+							<div class="user-status active"></div>
+						</div>
+						<div class="friend" style="background-color: #D9D9D9;">
+							<img src="images/users/2_men.svg">
+							<div class="user-status"></div>
+						</div>
+						<div class="friend" style="background-color: #D9D9D9;">
+							<img src="images/users/3_men.svg">
+							<div class="user-status"></div>
+						</div>
+					</div>
                 </div> 
             </div>
         </div>
         <script src="script.js"></script>
+		<script src="game-js/racket-mv.js"> </script>
     </body>
 </html>
