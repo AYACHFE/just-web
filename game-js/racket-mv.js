@@ -105,19 +105,19 @@ function moveBall() {
     ballY += speedY;
 
     // Check for collision with the walls and reverse direction if needed
-    if (ballX + ballDiameter > rect.right - ballDiameter) {
+    if (ballX + ballDiameter + 10 > rect.right - ballDiameter) {
 		// ballX = rect.right - ballDiameter;
 		speedX = -speedX;
 	}
-	if (ballX < rect.left) {
+	if (ballX + 10 < rect.left) {
 		ballX = rect.left;
 		speedX = -speedX;
 	}
-	if (ballY + ballDiameter > rect.bottom - ballDiameter) {
+	if (ballY + ballDiameter + 10 > rect.bottom) {
 		// ballY = rect.bottom - ballDiameter;
 		speedY = -speedY;
 	}
-	if (ballY < rect.top) {
+	if (ballY + 10 < rect.top) {
 		ballY = rect.top;
 		speedY = -speedY;
 	}
