@@ -40,8 +40,8 @@
 	color: rgb(255, 255, 255);
 	font-size: 2vw;
 	padding: 1%;
-
 }
+
 .tb-user-1-logo , .tb-user-2-logo{
 	width: 30%;
 	padding: 0px 10px;
@@ -106,7 +106,7 @@
 }
 .middle-part {
 	display: flex;
-    justify-content: `;
+    /* justify-content: space-around; */
     align-items: center;
 	height: 100%;
 }
