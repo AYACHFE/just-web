@@ -79,12 +79,12 @@ document.addEventListener('keyup', function(event) {
 setInterval(function() {
     const leftRacket = document.querySelector('.left-racket img');
     const rightRacket = document.querySelector('.right-racket img');
-    const step = 100; // Change this value to make the rackets move faster or slower
+    const step = 10; // Change this value to make the rackets move faster or slower
 
     if (moveUpRight) {
         // Move the right racket up
         let newTopRightUp = (parseInt(rightRacket.style.top) || 0) - step;
-        if (newTopRightUp >= -boardHeight / 2 - 100) {
+        if (newTopRightUp >= -boardHeight / 2) {
             rightRacket.style.top = newTopRightUp + 'px';
         }
     }
@@ -92,7 +92,7 @@ setInterval(function() {
     if (moveDownRight) {
         // Move the right racket down
         let newTopRightDown = (parseInt(rightRacket.style.top) || 0) + step;
-        if (newTopRightDown <= boardHeight / 2) {
+        if (newTopRightDown <= boardHeight / 2 - 100) {
             rightRacket.style.top = newTopRightDown + 'px';
         }
     }
@@ -100,7 +100,7 @@ setInterval(function() {
     if (moveUpLeft) {
         // Move the left racket up
         let newTopLeftUp = (parseInt(leftRacket.style.top) || 0) - step;
-        if (newTopLeftUp >= -boardHeight / 2 - 100) {
+        if (newTopLeftUp >= -boardHeight / 2) {
             leftRacket.style.top = newTopLeftUp + 'px';
         }
     }
@@ -108,11 +108,11 @@ setInterval(function() {
     if (moveDownLeft) {
         // Move the left racket down
         let newTopLeftDown = (parseInt(leftRacket.style.top) || 0) + step;
-        if (newTopLeftDown <= boardHeight / 2) {
+        if (newTopLeftDown <= boardHeight / 2 - 100) {
             leftRacket.style.top = newTopLeftDown + 'px';
         }
     }
-}, 100); // Change this value to make the rackets move smoother or choppier
+}, 20); // Change this value to make the rackets move smoother or choppier
 
 // document.addEventListener('keydown', function(event) {
 // 	const leftRacket = document.querySelector('.left-racket img');
@@ -124,7 +124,6 @@ setInterval(function() {
 // 	var racket = document.getElementsByClassName('left-racket')[0];
 // 	var maxRacketY = div.offsetHeight - racket.offsetHeight;
 // 	// console.log(racket.offsetHeight);
-	
 //     switch(event.key) {
 //         case 'ArrowUp':
 //             // Move the right racket up, but not above -330px
@@ -217,8 +216,8 @@ function moveBall() {
 		}
 		else {
 			scoreP2++;
-			let ballX = boardWidth / 2 - ballDiameter / 2 + rect.top;
-			let ballY = boardHeight / 2 - ballDiameter / 2 + rect.left;
+			ballX = boardWidth / 2 - ballDiameter / 2 + rect.top;
+			ballY = boardHeight / 2 - ballDiameter / 2 + rect.left;
 			ball.style.left = `${ballX}px`;
     		ball.style.top = `${ballY}px`;
 			return;
@@ -237,20 +236,14 @@ function moveBall() {
 		}
 		else {
 			scoreP1++;
-			let ballX = boardWidth / 2 - ballDiameter / 2 + rect.top;
-			let ballY = boardHeight / 2 - ballDiameter / 2 + rect.left;
+			ballX = boardWidth / 2 - ballDiameter / 2 + rect.top;
+			ballY = boardHeight / 2 - ballDiameter / 2 + rect.left;
 			ball.style.left = `${ballX}px`;
     		ball.style.top = `${ballY}px`;
 			return;
 		}
 	}
-	// if (ballX + 10 < rect.left) {
-	// 	scoreP1++;
-	// 	ballX = rect.left;
-	// 	speedX = -speedX;
-	// }
 	if (ballY + ballDiameter + 10 > rect.bottom) {
-		// ballY = rect.bottom - ballDiameter;
 		speedY = -speedY;
 	}
 	if (ballY + 10 < rect.top) {
