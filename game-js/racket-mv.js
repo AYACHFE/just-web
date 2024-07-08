@@ -36,56 +36,134 @@ window.addEventListener('resize', function() {
 
 });
 
+
+//---------------------- racket event listener to move up and down ----------------------\\
+let moveUpRight = false;
+let moveDownRight = false;
+let moveUpLeft = false;
+let moveDownLeft = false;
+
 document.addEventListener('keydown', function(event) {
-	const leftRacket = document.querySelector('.left-racket img');
-    const rightRacket = document.querySelector('.right-racket img');
-    const step = 100; // Change this value to make the rackets move faster or slower
-	hideStartGameElements();
-	var div = document.getElementsByClassName('game-board')[0];
-	var height = div.offsetHeight;
-	var racket = document.getElementsByClassName('left-racket')[0];
-	var maxRacketY = div.offsetHeight - racket.offsetHeight;
-	// console.log(racket.offsetHeight);
-	
     switch(event.key) {
         case 'ArrowUp':
-            // Move the right racket up, but not above -330px
-            let newTopRightUp = (parseInt(rightRacket.style.top) || 0) - step;
-			// console.log(-boardHeight);
-			// console.log(rect.top);
-            if (newTopRightUp >= -boardHeight / 2 - 100) {
-				rightRacketRect = rightRacket.getBoundingClientRect();
-                rightRacket.style.top = newTopRightUp + 'px';
-            }
+            moveUpRight = true;
             break;
         case 'ArrowDown':
-            // Move the right racket down, but not below 240px
-            let newTopRightDown = (parseInt(rightRacket.style.top) || 0) + step;
-            if (newTopRightDown <= boardHeight / 2 /*- 100*/) {
-                rightRacket.style.top = newTopRightDown + 'px';
-				rightRacketRect = rightRacket.getBoundingClientRect();
-            }
+            moveDownRight = true;
             break;
-			case 'w':
-            // Move the left racket up, but not above -330px
-            let newTopLeftUp = (parseInt(leftRacket.style.top) || 0) - step;
-            if (newTopLeftUp >= -boardHeight / 2 - 100) {
-				leftRacketRect = leftRacket.getBoundingClientRect();
-				// console.log("w -->" + leftRacketRect.top);
-                leftRacket.style.top = newTopLeftUp + 'px';
-            }
+        case 'w':
+            moveUpLeft = true;
             break;
         case 's':
-            // Move the left racket down, but not below 240px
-            let newTopLeftDown = (parseInt(leftRacket.style.top) || 0) + step;
-            if (newTopLeftDown <= boardHeight / 2 /*- 100*/) {
-				leftRacketRect = leftRacket.getBoundingClientRect();
-				// console.log("s -->" + leftRacketRect.top);
-                leftRacket.style.top = newTopLeftDown + 'px';
-            }
+            moveDownLeft = true;
             break;
     }
 });
+
+document.addEventListener('keyup', function(event) {
+    switch(event.key) {
+        case 'ArrowUp':
+            moveUpRight = false;
+            break;
+        case 'ArrowDown':
+            moveDownRight = false;
+            break;
+        case 'w':
+            moveUpLeft = false;
+            break;
+        case 's':
+            moveDownLeft = false;
+            break;
+    }
+});
+setInterval(function() {
+    const leftRacket = document.querySelector('.left-racket img');
+    const rightRacket = document.querySelector('.right-racket img');
+    const step = 100; // Change this value to make the rackets move faster or slower
+
+    if (moveUpRight) {
+        // Move the right racket up
+        let newTopRightUp = (parseInt(rightRacket.style.top) || 0) - step;
+        if (newTopRightUp >= -boardHeight / 2 - 100) {
+            rightRacket.style.top = newTopRightUp + 'px';
+        }
+    }
+
+    if (moveDownRight) {
+        // Move the right racket down
+        let newTopRightDown = (parseInt(rightRacket.style.top) || 0) + step;
+        if (newTopRightDown <= boardHeight / 2) {
+            rightRacket.style.top = newTopRightDown + 'px';
+        }
+    }
+
+    if (moveUpLeft) {
+        // Move the left racket up
+        let newTopLeftUp = (parseInt(leftRacket.style.top) || 0) - step;
+        if (newTopLeftUp >= -boardHeight / 2 - 100) {
+            leftRacket.style.top = newTopLeftUp + 'px';
+        }
+    }
+
+    if (moveDownLeft) {
+        // Move the left racket down
+        let newTopLeftDown = (parseInt(leftRacket.style.top) || 0) + step;
+        if (newTopLeftDown <= boardHeight / 2) {
+            leftRacket.style.top = newTopLeftDown + 'px';
+        }
+    }
+}, 100); // Change this value to make the rackets move smoother or choppier
+
+// document.addEventListener('keydown', function(event) {
+// 	const leftRacket = document.querySelector('.left-racket img');
+//     const rightRacket = document.querySelector('.right-racket img');
+//     const step = 100; // Change this value to make the rackets move faster or slower
+// 	hideStartGameElements();
+// 	var div = document.getElementsByClassName('game-board')[0];
+// 	var height = div.offsetHeight;
+// 	var racket = document.getElementsByClassName('left-racket')[0];
+// 	var maxRacketY = div.offsetHeight - racket.offsetHeight;
+// 	// console.log(racket.offsetHeight);
+	
+//     switch(event.key) {
+//         case 'ArrowUp':
+//             // Move the right racket up, but not above -330px
+//             let newTopRightUp = (parseInt(rightRacket.style.top) || 0) - step;
+// 			// console.log(-boardHeight);
+// 			// console.log(rect.top);
+//             if (newTopRightUp >= -boardHeight / 2 - 100) {
+// 				rightRacketRect = rightRacket.getBoundingClientRect();
+//                 rightRacket.style.top = newTopRightUp + 'px';
+//             }
+//             break;
+//         case 'ArrowDown':
+//             // Move the right racket down, but not below 240px
+//             let newTopRightDown = (parseInt(rightRacket.style.top) || 0) + step;
+//             if (newTopRightDown <= boardHeight / 2 /*- 100*/) {
+//                 rightRacket.style.top = newTopRightDown + 'px';
+// 				rightRacketRect = rightRacket.getBoundingClientRect();
+//             }
+//             break;
+// 			case 'w':
+//             // Move the left racket up, but not above -330px
+//             let newTopLeftUp = (parseInt(leftRacket.style.top) || 0) - step;
+//             if (newTopLeftUp >= -boardHeight / 2 - 100) {
+// 				leftRacketRect = leftRacket.getBoundingClientRect();
+// 				// console.log("w -->" + leftRacketRect.top);
+//                 leftRacket.style.top = newTopLeftUp + 'px';
+//             }
+//             break;
+//         case 's':
+//             // Move the left racket down, but not below 240px
+//             let newTopLeftDown = (parseInt(leftRacket.style.top) || 0) + step;
+//             if (newTopLeftDown <= boardHeight / 2 /*- 100*/) {
+// 				leftRacketRect = leftRacket.getBoundingClientRect();
+// 				// console.log("s -->" + leftRacketRect.top);
+//                 leftRacket.style.top = newTopLeftDown + 'px';
+//             }
+//             break;
+//     }
+// });
 
 //--------------------------ball------------------------------------\\
 
