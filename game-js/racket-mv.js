@@ -33,8 +33,7 @@ window.addEventListener('resize', function() {
     boardHeight = gameBoard.clientHeight;
     boardWidth = gameBoard.clientWidth;
 	rect = gameBoard.getBoundingClientRect();
-    // console.log("Board height is " + boardHeight);
-    // console.log("Board width is " + boardWidth);
+
 });
 
 document.addEventListener('keydown', function(event) {
@@ -54,23 +53,25 @@ document.addEventListener('keydown', function(event) {
             let newTopRightUp = (parseInt(rightRacket.style.top) || 0) - step;
 			// console.log(-boardHeight);
 			// console.log(rect.top);
-            if (newTopRightUp >= -boardHeight / 2) {
+            if (newTopRightUp >= -boardHeight / 2 - 100) {
+				rightRacketRect = rightRacket.getBoundingClientRect();
                 rightRacket.style.top = newTopRightUp + 'px';
             }
             break;
         case 'ArrowDown':
             // Move the right racket down, but not below 240px
             let newTopRightDown = (parseInt(rightRacket.style.top) || 0) + step;
-            if (newTopRightDown <= boardHeight / 2 - 100) {
+            if (newTopRightDown <= boardHeight / 2 /*- 100*/) {
                 rightRacket.style.top = newTopRightDown + 'px';
+				rightRacketRect = rightRacket.getBoundingClientRect();
             }
             break;
-        case 'w':
+			case 'w':
             // Move the left racket up, but not above -330px
             let newTopLeftUp = (parseInt(leftRacket.style.top) || 0) - step;
-            if (newTopLeftUp >= -boardHeight / 2) {
+            if (newTopLeftUp >= -boardHeight / 2 - 100) {
 				leftRacketRect = leftRacket.getBoundingClientRect();
-				console.log("w -->" + leftRacketRect.top);
+				// console.log("w -->" + leftRacketRect.top);
                 leftRacket.style.top = newTopLeftUp + 'px';
             }
             break;
@@ -78,8 +79,8 @@ document.addEventListener('keydown', function(event) {
             // Move the left racket down, but not below 240px
             let newTopLeftDown = (parseInt(leftRacket.style.top) || 0) + step;
             if (newTopLeftDown <= boardHeight / 2 /*- 100*/) {
-				leftRacketRect = rightRacket.getBoundingClientRect();
-				console.log("s -->" + leftRacketRect.top);
+				leftRacketRect = leftRacket.getBoundingClientRect();
+				// console.log("s -->" + leftRacketRect.top);
                 leftRacket.style.top = newTopLeftDown + 'px';
             }
             break;
@@ -92,8 +93,8 @@ const ballDiameter = ball.clientWidth;
 
 let ballX = boardWidth / 2 - ballDiameter / 2 + rect.top; // Initial X position at the center of the board
 let ballY = boardHeight / 2 - ballDiameter / 2 + rect.left; // Initial Y position
-let speedX = 20; // Horizontal speed
-let speedY = 20; // Vertical speed
+let speedX = 10; // Horizontal speed
+let speedY = 10; // Vertical speed
 
 let isMoving = false; // Flag to check if the ball is moving
 
@@ -124,30 +125,34 @@ function moveBall() {
     ballY += speedY;
 
     // Check for collision with the walls and reverse direction if needed
-    if (ballX + ballDiameter + 10 > rect.right - ballDiameter) {
-		scoreP2++;
-		speedX = -speedX;
-		// let rightRacketRect = rightRacket.getBoundingClientRect();
-
-		// if (ballRect.right >= rightRacketRect.left && ballRect.top + ballRect.height >= rightRacketRect.top && ballRect.top <= rightRacketRect.bottom) {
-		// 	// The ball has hit the right racket
-		// 	speedX = -speedX;
-		// 	ballX = rightRacketRect.left - ballDiameter;
-		// }
-		// else {
-		// 	scoreP2++;
-		// 	let ballX = boardWidth / 2 - ballDiameter / 2 + rect.top;
-		// 	let ballY = boardHeight / 2 - ballDiameter / 2 + rect.left;
-		// 	// ball.style.left = `${ballX}px`;
-    	// 	// ball.style.top = `${ballY}px`;
-		// 	return;
-		// }
-	}
 	let ballRect = ball.getBoundingClientRect();
 	let leftRacketRect = leftRacket.getBoundingClientRect();
+	let rightRacketRect = rightRacket.getBoundingClientRect();
+    if (ballX + ballDiameter + 10 > rect.right - ballDiameter) {
+		// scoreP2++;
+		// speedX = -speedX;
+		console.log("ballRect.left " + ballRect.left + " rightRacketRect.right " + rightRacketRect.right + " ballRect.top " + ballRect.top + " rightRacketRect.top " + rightRacketRect.top + " rightRacketRect.bottom " + rightRacketRect.bottom);
+		if (ballRect.top + ballRect.height >= rightRacketRect.top && ballRect.top <= rightRacketRect.bottom)
+		{
+			speedX = -speedX;
+			// ballX = rect.right;
+		}
+		else {
+			scoreP2++;
+			let ballX = boardWidth / 2 - ballDiameter / 2 + rect.top;
+			let ballY = boardHeight / 2 - ballDiameter / 2 + rect.left;
+			ball.style.left = `${ballX}px`;
+    		ball.style.top = `${ballY}px`;
+			return;
+		}
+	}
 	if (ballX + 10 < rect.left) {
-		// console.log(" ballY: " + ballY + " leftRacketRect.top: " + leftRacketRect.top+" leftRacketRect.bottom: " + leftRacketRect.bottom)
-		if (ballRect.left <= leftRacketRect.right && ballRect.top + ballRect.height >= leftRacketRect.top && ballRect.top <= leftRacketRect.bottom)
+		console.log("ballRect.left " + ballRect.left + " leftRacketRect.right " + leftRacketRect.right + " ballRect.top " + ballRect.top + " leftRacketRect.top " + leftRacketRect.top + " leftRacketRect.bottom " + leftRacketRect.bottom);
+		// console.log("board " + (rect.left + leftRacketRect.width + ballRect.width));
+
+		// if (ballRect.left <= (leftRacketRect.left+50))
+		// if (ballRect.left <= leftRacketRect.right && ballRect.top + ballRect.height >= leftRacketRect.top && ballRect.top <= leftRacketRect.bottom)
+		if (ballRect.top + ballRect.height >= leftRacketRect.top && ballRect.top <= leftRacketRect.bottom)
 		{
 			speedX = -speedX;
 			ballX = rect.left;
@@ -156,8 +161,8 @@ function moveBall() {
 			scoreP1++;
 			let ballX = boardWidth / 2 - ballDiameter / 2 + rect.top;
 			let ballY = boardHeight / 2 - ballDiameter / 2 + rect.left;
-			// ball.style.left = `${ballX}px`;
-    		// ball.style.top = `${ballY}px`;
+			ball.style.left = `${ballX}px`;
+    		ball.style.top = `${ballY}px`;
 			return;
 		}
 	}
