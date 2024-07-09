@@ -110,16 +110,28 @@
     align-items: center;
 	height: 100%;
 }
-.start-game {
+.start-game-first h2 {
+    color: rgb(113, 62, 62);
+    font-size: 3vw;
+    padding: 46px;
+}
+
+.start-game-second h2 {
+    color: rgb(255, 255, 255);
+    font-size: 3vw;
+    padding: 30px;
+}
+.game-over {
 	color: rgb(255, 255, 255);
 	font-size: 2vw;
-	padding: 30px;
+	/* padding: 30px; */
 }
 
 .ball {
     position: absolute;
-    top: 50%;
+    top: 57%;
     left: 50%;
+    /* left: calc(50% - 22px); */
     width: 45px;
     height: 45px;
     background: white;

@@ -1,5 +1,6 @@
 // Get all the start game text elements
 let startGameElements = document.querySelectorAll('.start-game h2');
+let gameover = document.querySelectorAll('.game-over h2');
 let ball_ = document.querySelectorAll('.ball');
 
 // Create a function to handle the event
@@ -8,13 +9,17 @@ function hideStartGameElements() {
     startGameElements.forEach(function(element) {
         element.style.display = 'none';
     });
-
+}
+function hideGameOver() {
+    gameover.forEach(function(element) {
+        element.style.display = 'none';
+    });
 }
 
 // Add the function as an event listener for multiple events
 document.addEventListener('click', hideStartGameElements);
 document.addEventListener('keypress', hideStartGameElements);
-
+hideGameOver();
 //---------------------------rackets-movemnt-----------------------------------\\
 //ball data
 const gameBoard = document.querySelector('.board');
@@ -120,61 +125,11 @@ setInterval(function() {
     }
 }, 20); // Change this value to make the rackets move smoother or choppier
 
-// document.addEventListener('keydown', function(event) {
-// 	const leftRacket = document.querySelector('.left-racket img');
-//     const rightRacket = document.querySelector('.right-racket img');
-//     const step = 100; // Change this value to make the rackets move faster or slower
-// 	hideStartGameElements();
-// 	var div = document.getElementsByClassName('game-board')[0];
-// 	var height = div.offsetHeight;
-// 	var racket = document.getElementsByClassName('left-racket')[0];
-// 	var maxRacketY = div.offsetHeight - racket.offsetHeight;
-// 	// console.log(racket.offsetHeight);
-//     switch(event.key) {
-//         case 'ArrowUp':
-//             // Move the right racket up, but not above -330px
-//             let newTopRightUp = (parseInt(rightRacket.style.top) || 0) - step;
-// 			// console.log(-boardHeight);
-// 			// console.log(rect.top);
-//             if (newTopRightUp >= -boardHeight / 2 - 100) {
-// 				rightRacketRect = rightRacket.getBoundingClientRect();
-//                 rightRacket.style.top = newTopRightUp + 'px';
-//             }
-//             break;
-//         case 'ArrowDown':
-//             // Move the right racket down, but not below 240px
-//             let newTopRightDown = (parseInt(rightRacket.style.top) || 0) + step;
-//             if (newTopRightDown <= boardHeight / 2 /*- 100*/) {
-//                 rightRacket.style.top = newTopRightDown + 'px';
-// 				rightRacketRect = rightRacket.getBoundingClientRect();
-//             }
-//             break;
-// 			case 'w':
-//             // Move the left racket up, but not above -330px
-//             let newTopLeftUp = (parseInt(leftRacket.style.top) || 0) - step;
-//             if (newTopLeftUp >= -boardHeight / 2 - 100) {
-// 				leftRacketRect = leftRacket.getBoundingClientRect();
-// 				// console.log("w -->" + leftRacketRect.top);
-//                 leftRacket.style.top = newTopLeftUp + 'px';
-//             }
-//             break;
-//         case 's':
-//             // Move the left racket down, but not below 240px
-//             let newTopLeftDown = (parseInt(leftRacket.style.top) || 0) + step;
-//             if (newTopLeftDown <= boardHeight / 2 /*- 100*/) {
-// 				leftRacketRect = leftRacket.getBoundingClientRect();
-// 				// console.log("s -->" + leftRacketRect.top);
-//                 leftRacket.style.top = newTopLeftDown + 'px';
-//             }
-//             break;
-//     }
-// });
-
 //--------------------------ball------------------------------------\\
 const ballDiameter = ball.clientWidth;
 const leftRacketPos = leftRacket.offsetTop;
-let ballX = boardWidth / 2 - ballDiameter / 2 + rect.top; // Initial X position at the center of the board
-let ballY = boardHeight / 2 - ballDiameter / 2 + rect.left; // Initial Y position
+let ballX = boardWidth / 2 - ballDiameter + rect.top; // Initial X position at the center of the board
+let ballY = boardHeight / 2 - ballDiameter/2 + rect.left; // Initial Y position
 let speedX = 10; // Horizontal speed
 let speedY = 10; // Vertical speed
 
@@ -205,16 +160,29 @@ async function moveBall() {
 		requestAnimationFrame(moveBall);
         return;
     }
+	scoreP1_html.innerHTML = scoreP1;
+	scoreP2_html.innerHTML = scoreP2;
+	// scoreP1 = 3;
 	if (newChance) {
-			ball.style.left = `${ballX}px`;
-    		ball.style.top = `${ballY}px`;
-			await sleep(700);
-			moveBall;
+		ball.style.left = `${ballX}px`;
+		ball.style.top = `${ballY}px`;
+		if (scoreP1 == 3 || scoreP2 == 3) {
+			const gameOverMessage = document.querySelector('.game-over h2');
+			const middle_line = document.querySelector('.middle-line');
+			const ball = document.querySelector('.ball');
+			
+			// // Change the content of the div
+			gameOverMessage.innerHTML = 'Game Over!<br> Player ' + (scoreP1 == 3 ? '1' : '2') + ' wins!';
+			middle_line.style.display = 'none';
+			ball.style.display = 'none';
+			gameOverMessage.style.display = 'block';
+			return;
+		}
+		await sleep(700);
+		moveBall;
 	}
 	newChance = false;
 	
-	scoreP1_html.innerHTML = scoreP1;
-	scoreP2_html.innerHTML = scoreP2;
     ballX += speedX;
     ballY += speedY;
     // Check for collision with the walls and reverse direction if needed
