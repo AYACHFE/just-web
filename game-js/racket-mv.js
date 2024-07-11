@@ -176,6 +176,7 @@ async function moveBall() {
 			middle_line.style.display = 'none';
 			ball.style.display = 'none';
 			gameOverMessage.style.display = 'block';
+			endGame();
 			return;
 		}
 		await sleep(700);
@@ -229,4 +230,40 @@ async function moveBall() {
 
     requestAnimationFrame(moveBall);
 }
-moveBall();
+// moveBall();
+
+// ------------------------------ time-counter ------------------------------\\
+
+let startTime, intervalId;
+
+// Call this function when the game starts
+function startGame() {
+	startTime = Date.now();
+    intervalId = setInterval(updateTime, 1000); // update time every second
+	console.log("asdasd");
+    // starts the game
+	moveBall();
+}
+
+// Call this function to update the time
+function updateTime() {
+	let currentTime = Date.now();
+    let timeDiff = currentTime - startTime; // in ms
+    let seconds = Math.floor(timeDiff / 1000); // convert to seconds
+    document.querySelector('.time h2').textContent = formatTime(seconds);
+}
+
+// Call this function to format the time as mm:ss
+function formatTime(seconds) {
+	let minutes = Math.floor(seconds / 60);
+    seconds = seconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+// Call this function when the game ends
+function endGame() {
+	clearInterval(intervalId); // stop the timer
+    // Rest of your game end logic here
+}
+
+startGame();
