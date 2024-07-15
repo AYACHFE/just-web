@@ -16,9 +16,9 @@ function hideGameOver() {
     });
 }
 
-// Add the function as an event listener for multiple events
+
 document.addEventListener('click', hideStartGameElements);
-document.addEventListener('keypress', hideStartGameElements);
+document.addEventListener('keydown', hideStartGameElements);
 hideGameOver();
 //---------------------------rackets-movemnt-----------------------------------\\
 //ball data
@@ -103,7 +103,7 @@ setInterval(function() {
     if (moveDownRight) {
         // Move the right racket down
         newTopRightDown = (parseInt(rightRacket.style.top) || 0) + step;
-        if (newTopRightDown <= boardHeight / 2 - 100) {
+        if (newTopRightDown <= boardHeight / 2 - 140) {
             rightRacket.style.top = newTopRightDown + 'px';
         }
     }
@@ -119,7 +119,7 @@ setInterval(function() {
     if (moveDownLeft) {
         // Move the left racket down
         newTopLeftDown = (parseInt(leftRacket.style.top) || 0) + step;
-        if (newTopLeftDown <= boardHeight / 2 - 100) {
+        if (newTopLeftDown <= boardHeight / 2 - 140) {
             leftRacket.style.top = newTopLeftDown + 'px';
         }
     }
@@ -155,8 +155,10 @@ function sleep(ms) {
 const initleftRacketRect = leftRacket.getBoundingClientRect();
 const initrightRacketRect = rightRacket.getBoundingClientRect();
 let newChance;
+let startTime, intervalId;
 async function moveBall() {
 	if (!isMoving) {
+		startGame();
 		requestAnimationFrame(moveBall);
         return;
     }
@@ -230,11 +232,11 @@ async function moveBall() {
 
     requestAnimationFrame(moveBall);
 }
-// moveBall();
+moveBall();
 
 // ------------------------------ time-counter ------------------------------\\
 
-let startTime, intervalId;
+
 
 // Call this function when the game starts
 function startGame() {
@@ -242,7 +244,7 @@ function startGame() {
     intervalId = setInterval(updateTime, 1000); // update time every second
 	console.log("asdasd");
     // starts the game
-	moveBall();
+	// moveBall();
 }
 
 // Call this function to update the time
@@ -262,8 +264,7 @@ function formatTime(seconds) {
 
 // Call this function when the game ends
 function endGame() {
-	clearInterval(intervalId); // stop the timer
-    // Rest of your game end logic here
+	clearInterval(intervalId);
 }
 
-startGame();
+// startGame();
