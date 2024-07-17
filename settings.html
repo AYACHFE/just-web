@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+			</style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/settings.css">
+            <title>HOME | AIT LWEB</title>
+    </head>
+    <body>
+        <div class="container" >
+            <div class="side-panel">
+                 <img src="images/Logo.svg" class="logo">
+                <div class="nav-options" >
+                    <button class="btn-option flex-center btn-highlight">
+                        <img src="images/Home.svg">
+                    </button>
+                    <button class="btn-option flex-center btn-simple">
+                        <img src="images/Users.svg">
+                    </button>
+                    <button class="btn-option flex-center btn-simple">
+                        <img src="images/Sms.svg">
+                    </button>
+                </div> 
+                <button class="logout flex-center">
+                    <img src="images/Logout.svg">
+                </button>
+            </div>
+            <div class="main">
+                <div class="header-bar">
+                    <div class="header-name">
+                        <h2 >Hi, </h2>
+                        <h2 > RACHIDA</h2>
+                    </div>
+                    <input class="header-search" type="text" placeholder="Search For Friends">
+                    <div class="header-notifications">
+                        <div class="notifications-widget"></div>
+                        <div class="notifications-widget"></div>
+                    </div>
+                </div>
+				<!--this is my part	-->
+                <div class="center-console">
+					<div class="settings-frame">
+						<div class="settings-side-bar">
+							<a href="" class="settings-btn">General</a>
+							<a href="" class="settings-btn">Account</a>
+							<a href="" class="settings-btn">Languages</a>
+							<a href="" class="settings-btn">Help</a>
+						</div>
+						<div class="settings-main">
+							<form>
+								<label class="general-form" for="first-name">First Name:</label><br>
+								<input class="general-form" type="text" id="first-name" name="first-name"><br>
+								<label class="general-form" for="last-name">Last Name:</label><br>
+								<input class="general-form" type="text" id="last-name" name="last-name"><br>
+								<label class="general-form" for="email">Email:</label><br>
+								<input class="general-form" type="email" id="email" name="email"><br>
+								<input class="general-form" type="submit" value="Save Changes">
+							</form>
+						</div>
+					</div>
+                </div>
+				<!--this is my part	-->
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
