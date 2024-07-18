@@ -50,25 +50,27 @@
 							<a href="/settings-languages.html" class="settings-btn">Languages</a>
 							<a href="" class="settings-btn">Help</a>
 						</div>
-
 						<div class="settings-main">
-							<form id="language-form">
-								<label for="language-select">Choose a language:</label>
-								<select class="language-select" name="language">
-									<option value="en">English</option>
-									<option value="fr">French</option>
-								</select>
-								<button class="language-submit" type="submit">Change Language</button>
+							<form id="registration-form" onsubmit="return checkPasswordMatch();">
+								<label class="general-form" for="password">Current Password:</label><br>
+								<input class="general-form" type="password" id="password" name="password"><br>
+								<label class="general-form" for="password">New Password:</label><br>
+								<input class="general-form" type="password" id="password" name="password"><br>
+								<label class="general-form" for="confirm-password">Confirm Password:</label><br>
+								<input class="general-form" type="password" id="confirm-password" name="confirm-password"><br>
+								<input class="general-form-submit" type="submit" value="Save Changes">
 							</form>
-							<!-- <script>
-								document.getElementById('language-form').addEventListener('submit', function(event) {
-									event.preventDefault(); // Prevent the form from submitting in the traditional way
-									var selectedLanguage = document.getElementById('language-select').value;
-									// Handle the language change here (e.g., AJAX request to the server)
-									console.log("Selected language: " + selectedLanguage);
-									// Optionally, show a message to the user indicating the language has been changed
-								});
-								</script> -->
+							<script>
+								function checkPasswordMatch() {
+									var password = document.getElementById("password").value;
+									var confirmPassword = document.getElementById("confirm-password").value;
+									if (password != confirmPassword) {
+										alert("Passwords do not match (MOOMI YAAA).");
+										return false;
+									}
+									return true;
+								}
+								</script>
 						</div>
 					</div>
                 </div>
