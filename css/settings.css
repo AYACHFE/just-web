@@ -174,4 +174,10 @@ body {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Glowing effect stays when selected */
 }
 
-/* -------------  ------------- */
+/* ------------- settings_icons ------------- */
+
+.settings-icon {
+	height: 100%;
+	width: auto;
+	margin: 0% 4%;
+}
