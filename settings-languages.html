@@ -51,30 +51,23 @@
 							<a href="" class="settings-btn">Help</a>
 						</div>
 						<div class="settings-main">
-							<form id="registration-form" onsubmit="return checkPasswordMatch();">
-								<label class="general-form" for="first-name">First Name:</label><br>
-								<input class="general-form" type="text" id="first-name" name="first-name"><br>
-								<label class="general-form" for="last-name">Last Name:</label><br>
-								<input class="general-form" type="text" id="last-name" name="last-name"><br>
-								<label class="general-form" for="email">Email:</label><br>
-								<input class="general-form" type="email" id="email" name="email"><br>
-								<label class="general-form" for="password">Password:</label><br>
-								<input class="general-form" type="password" id="password" name="password"><br>
-								<label class="general-form" for="confirm-password">Confirm Password:</label><br>
-								<input class="general-form" type="password" id="confirm-password" name="confirm-password"><br>
-								<input class="general-form-submit" type="submit" value="Save Changes">
+							<form id="language-form">
+								<label for="language-select">Choose a language:</label>
+								<select id="language-select" name="language">
+									<option value="en">English</option>
+									<option value="fr">French</option>
+								</select>
+								<button type="submit">Change Language</button>
 							</form>
-							<script>
-								function checkPasswordMatch() {
-									var password = document.getElementById("password").value;
-									var confirmPassword = document.getElementById("confirm-password").value;
-									if (password != confirmPassword) {
-										alert("Passwords do not match (MOOMI YAAA).");
-										return false;
-									}
-									return true;
-								}
-								</script>
+							<!-- <script>
+								document.getElementById('language-form').addEventListener('submit', function(event) {
+									event.preventDefault(); // Prevent the form from submitting in the traditional way
+									var selectedLanguage = document.getElementById('language-select').value;
+									// Handle the language change here (e.g., AJAX request to the server)
+									console.log("Selected language: " + selectedLanguage);
+									// Optionally, show a message to the user indicating the language has been changed
+								});
+								</script> -->
 						</div>
 					</div>
                 </div>

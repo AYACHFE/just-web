@@ -31,10 +31,12 @@ body {
 	flex-direction: column;
 	border-radius: 35px;
 	margin-right: 1.5%;
+	padding: 6% 4%;
 	/* padding: 1%; */
 	/* justify-content: space-between; */
 	
 }
+
 .settings-main {
 	height: 100%;
 	background-color: #04927B;
@@ -42,7 +44,12 @@ body {
 	flex: 7;
 	border-radius: 35px;
 	margin-left: 1.5%;
-
+	
+	font-weight: bold;
+	font-size: 1vw;
+	flex-direction: column;
+	padding: 5%;
+	/* width: 50%; */
 }
 
 .settings-btn {
@@ -56,21 +63,13 @@ body {
 	font-size: 1.5vw;
 	color: #00453F;
 	text-decoration: none;
-	padding: 5%;
+	padding: 5% 8%;
 	font-weight: bold;
 	margin: 1% 0%;
 }
+
 .settings-btn:hover {
 	background-color: #00766A;
-}
-.settings-main {
-	font-weight: bold;
-	font-size: 1vw;
-	display: flex;
-	flex-direction: column;
-	/* justify-content: space-between; */
-	padding: 5%;
-	width: 50%;
 }
 .settings-main input {
     background-color: #00766A;
@@ -84,5 +83,14 @@ body {
     box-shadow: 0 0 10px #9ecaed; /* adds a glow effect */
 }
 .general-form {
-	margin: 2%;
+	margin: 2%  0%;
 }
+.general-form-submit  {
+	margin: 2%  0%;
+	/* background-color: #00766A; */
+	border: none;
+	color: #00453F;
+	font-size: 1vw;
+	/* border-radius: 10px; */
+}
+
