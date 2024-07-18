@@ -58,19 +58,77 @@
 								<input class="general-form" type="text" id="last-name" name="last-name"><br>
 								<label class="general-form" for="last-name">User Name:</label><br>
 								<input class="general-form" type="text" id="last-name" name="last-name"><br>
+								
+								<label class="general-form" for="avatar">Select an Avatar:</label><br>
+								<div class="svg-avatar-selection">
+									<div class="avatar-option">
+										<input type="radio" id="avatar1" name="avatar" value="1_men.svg" hidden>
+										<label for="avatar1"><img src="images/users/1_men.svg" alt="Avatar 1" class="avatar-image"></label>
+									</div>
+									<div class="avatar-option">
+										<input type="radio" id="avatar2" name="avatar" value="2_men.svg" hidden>
+										<label for="avatar2"><img src="images/users/2_men.svg" alt="Avatar 2" class="avatar-image"></label>
+									</div>
+									<div class="avatar-option">
+										<input type="radio" id="avatar3" name="avatar" value="3_men.svg" hidden>
+										<label for="avatar3"><img src="images/users/3_men.svg" alt="Avatar 3" class="avatar-image"></label>
+									</div>
+									<div class="avatar-option">
+										<input type="radio" id="avatar4" name="avatar" value="4_men.svg" hidden>
+										<label for="avatar4"><img src="images/users/4_men.svg" alt="Avatar 4" class="avatar-image"></label>
+									</div>
+									<div class="avatar-option">
+										<input type="radio" id="avatar5" name="avatar" value="5_men.svg" hidden>
+										<label for="avatar5"><img src="images/users/5_men.svg" alt="Avatar 5" class="avatar-image"></label>
+									</div>
+									<div class="avatar-option">
+										<input type="radio" id="avatar6" name="avatar" value="6_men.svg" hidden>
+										<label for="avatar6"><img src="images/users/6_men.svg" alt="Avatar 6" class="avatar-image"></label>
+									</div>
+									<div class="avatar-option">
+										<input type="radio" id="happy1" name="avatar" value="happy-1.svg" hidden>
+										<label for="happy1"><img src="images/users/happy-1.svg" alt="Happy 1" class="avatar-image"></label>
+									</div>
+									<div class="avatar-option">
+										<input type="radio" id="happy2" name="avatar" value="happy-2.svg" hidden>
+										<label for="happy2"><img src="images/users/happy-2.svg" alt="Happy 2" class="avatar-image"></label>
+									</div>
+									<div class="avatar-option">
+										<input type="radio" id="happy3" name="avatar" value="happy-3.svg" hidden>
+										<label for="happy3"><img src="images/users/happy-3.svg" alt="Happy 3" class="avatar-image"></label>
+									</div>
+									<div class="avatar-option">
+										<input type="radio" id="happy4" name="avatar" value="happy-4.svg" hidden>
+										<label for="happy4"><img src="images/users/happy-4.svg" alt="Happy 4" class="avatar-image"></label>
+									</div>
+									<div class="avatar-option">
+										<input type="radio" id="happy5" name="avatar" value="happy-5.svg" hidden>
+										<label for="happy5"><img src="images/users/happy-5.svg" alt="Happy 5" class="avatar-image"></label>
+									</div>
+									<div class="avatar-option">
+										<input type="radio" id="happy6" name="avatar" value="happy-6.svg" hidden>
+										<label for="happy6"><img src="images/users/happy-6.svg" alt="Happy 6" class="avatar-image"></label>
+									</div>
+								</div>
+								
+								
 								<input class="general-form-submit" type="submit" value="Save Changes">
 							</form>
 							<script>
-								function checkPasswordMatch() {
-									var password = document.getElementById("password").value;
-									var confirmPassword = document.getElementById("confirm-password").value;
-									if (password != confirmPassword) {
-										alert("Passwords do not match (MOOMI YAAA).");
-										return false;
-									}
-									return true;
-								}
-								</script>
+									// Get all avatar options
+									const avatars = document.querySelectorAll('.avatar-option');
+									
+									// Add click event listener to each avatar
+									avatars.forEach(avatar => {
+										avatar.addEventListener('click', function() {
+											// Remove 'selected' class from all avatars
+									        avatars.forEach(av => av.classList.remove('selected'));
+											
+									        // Add 'selected' class to clicked avatar
+									        this.classList.add('selected');
+									    });
+									});
+							</script>
 						</div>
 					</div>
                 </div>

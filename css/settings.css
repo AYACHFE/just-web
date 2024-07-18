@@ -134,3 +134,41 @@ body {
 	outline: none; /* removes the default browser outline */
 	box-shadow: 0 0 10px #9ecaed; /* adds a glow effect */
 }
+
+/* -------------avatars------------- */
+
+.avatar-image {
+	width: 90%;
+	height: auto;
+	margin: auto;
+	display: block;
+}
+
+.svg-avatar-selection {
+	padding: 2% 5%;
+    display: flex;
+	/* flex-direction: column; */
+    flex-wrap: wrap;
+    /* justify-content: start; Align items to the start of the container */
+    gap: 10px; /* Optional: adds some space between the items */
+}
+
+.avatar-option {
+	flex: 0 1 auto; /* Flex items can grow and shrink but not beyond their auto size */
+	background-color: #3DBDA7;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center; /* Center horizontally */
+	align-items: center; /* Center vertically */
+	width: 6vw;
+	height: 6vw;
+	/* width: 110px;
+	height: 110px; */
+}
+
+.avatar-option:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Glowing effect on hover */
+}
+
+.avatar-option.selected {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Glowing effect stays when selected */}
